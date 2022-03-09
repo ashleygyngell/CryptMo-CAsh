@@ -1,12 +1,13 @@
 import React from 'react';
-
-function handleClick(event) {
-  console.log(event.target.innerHTML);
-  // .replaceAll((' '), '')
-  // .tolowercase
-}
+import { useNavigate } from 'react-router-dom';
 
 const Homepage = () => {
+  function handleClick(event) {
+    const extension = /event.target.innerHTML.replaceAll(' ', '').toLowerCase();
+    navigate(/extension);
+  }
+
+  const navigate = useNavigate();
   return (
     <section className="hero is-fullheight has-background-primary">
       <div className="hero-header mt-6 ">
