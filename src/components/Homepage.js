@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Homepage = () => {
   function handleClick(event) {
-    const extension = /event.target.innerHTML.replaceAll(' ', '').toLowerCase();
-    navigate(/extension);
+    const extension = event.target.innerHTML.replaceAll(' ', '').toLowerCase();
+    navigate(extension);
+    
   }
 
   const navigate = useNavigate();
@@ -17,14 +18,14 @@ const Homepage = () => {
         <div className="container columns">
           <button
             id="top-100"
-            className="card p-6 column is-half m-2 has-text-centered"
+            className="card p-6 column is-half m-2 has-text-centered is-clickable"
             onClick={handleClick}
           >
             Top 100
           </button>
           <button
             id="convert"
-            className="card p-6 column is-half m-2 has-text-centered"
+            className="card p-6 column is-half m-2 has-text-centered is-clickable"
             onClick={handleClick}
           >
             Convert
