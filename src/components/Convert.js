@@ -4,6 +4,7 @@ import { getTop100 } from '../lib/api';
 function Convert() {
   const [amount, setAmount] = React.useState(0);
   const [cryptos, setCryptos] = React.useState(null);
+  const [conversionResult,setConversionResult] = React.useState(0)
   console.log(cryptos);
   React.useEffect(() => {
     const getData = async () => {
@@ -20,6 +21,7 @@ function Convert() {
 
   function handleChange(event) {
     setAmount(event.target.value);
+    setConversionResult(event.target.value / cryptos.data[0].quote.GBP.price);
   }
   console.log(amount);
 
@@ -27,7 +29,7 @@ function Convert() {
 
   // const cryptoPrice = cryptos.data[0].quote.GBP.price
 
-  const conversionResult = amount / 2;
+  
   // cryptoPrice;
 
   function executeConversion() {
@@ -42,7 +44,6 @@ function Convert() {
     };
     getData();
 
-    conversionResult.innerHTML = conversionResult;
   }
 
   //
@@ -55,9 +56,11 @@ function Convert() {
               <label class="label">CURRENCY</label>
               <div class=" columns control">
                 <input
+                  type="number"
                   className="input"
                   placeholder="VALUE"
                   onChange={handleChange}
+                  value={amount}
                 />
                 <div class="select is-multiple">
                   <select multiple size="2">
@@ -98,8 +101,8 @@ function Convert() {
 
             <div class="field">
               <label class="label">CURRENCY</label>
-              <div class="control">
-                <input class="input" placeholder="VALUE" />
+              <div class="conversionResult">
+                <p>{conversionResult}</p>
               </div>
             </div>
 

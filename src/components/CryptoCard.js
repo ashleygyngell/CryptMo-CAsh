@@ -67,7 +67,7 @@ const CryptoCard = ({
           <td>
             <img
               src={`https://s3.coinmarketcap.com/generated/sparklines/web/7d/2781/${id}.svg`}
-              alt=""
+              alt="coin-logo"
             />
           </td>
         </tr>
