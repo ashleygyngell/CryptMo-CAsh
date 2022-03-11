@@ -1,60 +1,79 @@
 import React from 'react';
-import { getTop100 } from '../lib/api';
+import { getTokenWithCurrency, getCurrencySign } from '../lib/api';
 
 function Convert() {
   const [amount, setAmount] = React.useState(0);
   const [cryptos, setCryptos] = React.useState(null);
-  const [conversionResult,setConversionResult] = React.useState(0)
-  console.log(cryptos);
+  const [conversionResult, setConversionResult] = React.useState(0);
+  const [selectedCrypto, setSelectedCrypto] = React.useState(0);
+  const [selectedCurrency, setSelectedCurrency] = React.useState('USD');
+  const [availableCurrencies, setAvailableCurrencies] = React.useState(null);
+  const [divisibleNumber, setDivisibleNumber] = React.useState(0);
+
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await getTop100();
+        const {
+          data: { data },
+        } = await getTokenWithCurrency(selectedCurrency);
         setCryptos(data);
-        console.log('this is after setcryptos', data.data[0].quote.GBP.price);
+        console.log(
+          'this is after setcryptos',
+          data[1].quote[selectedCurrency].price
+        );
       } catch (err) {
         console.error(err);
       }
     };
+
+    const getAvailableCurrencies = async () => {
+      const {
+        data: { data },
+      } = await getCurrencySign();
+      setAvailableCurrencies(data);
+    };
+
+    getAvailableCurrencies();
     getData();
-  }, []);
+  }, [selectedCurrency]);
 
   function handleChange(event) {
     setAmount(event.target.value);
-    setConversionResult(event.target.value / cryptos.data[0].quote.GBP.price);
+    setDivisibleNumber(cryptos.find(crypto => crypto.name === selectedCrypto).quote[selectedCurrency].price)
+    setConversionResult(event.target.value / divisibleNumber)
+    console.log('test', selectedCurrency)
+    ;
   }
-  console.log(amount);
 
-  // console.log(cryptos.data[0].quote.GBP.price)
+  const handleCurrencySelect = (e) => {
+    setSelectedCurrency(e.target.value);
+    console.log('test', selectedCurrency)
+  };
 
-  // const cryptoPrice = cryptos.data[0].quote.GBP.price
+  const handleCryptoSelect = (e) => {
+    setSelectedCrypto(e.target.value);
+  };
 
-  
-  // cryptoPrice;
-
-  function executeConversion() {
-    const getData = async () => {
-      try {
-        const { data } = await getTop100();
-        setCryptos(data);
-        console.log('this is after setcryptos', data.data[0].quote.GBP.price);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    getData();
-
-  }
+  console.log({
+    amount,
+    cryptos,
+    conversionResult,
+    selectedCrypto,
+    availableCurrencies,
+    selectedCurrency
+  });
 
   //
   return (
     <>
-      <div class="columns">
-        <div class="column is-half">
-          <form class="box">
-            <div class="field">
-              <label class="label">CURRENCY</label>
-              <div class=" columns control">
+      <div className="columns">
+        <div className="column ">
+          {/* TOP */}
+        
+          <form className="box">
+            <div className="field ">
+              <label className="label">Amount</label>
+              <div className=" column is-half  control">
                 <input
                   type="number"
                   className="input"
@@ -62,53 +81,117 @@ function Convert() {
                   onChange={handleChange}
                   value={amount}
                 />
-                <div class="select is-multiple">
-                  <select multiple size="2">
-                    <option value="GBP">GBP</option>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                  </select>
                 </div>
+                <label className="label">Currency</label>
+                <div className="select is-multiple column ">
+                  <select multiple size="3" onChange={handleCurrencySelect}>
+                    {!!availableCurrencies &&
+                      availableCurrencies.map((currency) => {
+                        return (
+                          <option key={currency.id} value={currency.symbol}>
+                            {currency.name}
+                          </option>
+                        );
+                      })}
+                  </select>
               </div>
             </div>
 
-            <div class="field">
-              <label class="label">CRYPTO (BITCOIN)</label>
-              <div class="conversionResult">
+            
+            
+    
+          
+            <div className="field">
+              <label className="label">Crypto</label>
+              <div className="select is-multiple">
+                <select multiple size="3" onChange={handleCryptoSelect}>
+                  {!!cryptos &&
+                    cryptos.map((currency) => {
+                      return (
+                        <option key={currency.id} value={currency.cmc_rank - 1}>
+                          {currency.name}
+                        </option>
+                      );
+                    })}
+                </select>
+              
+            </div>
+
+            <div className="field">
+              <label className="label">Conversion Result</label>
+              <div className="conversionResult">
                 <p>{conversionResult}</p>
               </div>
             </div>
 
-            <button class="button is-primary" onClick={executeConversion}>
-              Convert
-            </button>
+            
+          
+        </div>
           </form>
         </div>
-        <div class="column is-half">
-          <form class="box">
-            <div class="field">
-              <label class="label">CRYTPTO</label>
-              <div class="control is-loading">
-                <input class="input" type="email" placeholder="100" />
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="label">CURRENCY</label>
-              <div class="conversionResult">
-                <p>{conversionResult}</p>
-              </div>
-            </div>
-
-            <button class="button is-primary">Convert</button>
-          </form>
-        </div>
+        
+      </div>
+       <div className="hero-foot ">
+        <nav className="tabs">
+          <div className="container ">
+            <ul>
+              <li>
+                <strong>
+                  <p className="ml-6  has-text-black">Mohamed Mohamed</p>
+                </strong>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.linkedin.com/in/mohamed-mohamed-2bb355115/"
+                  className="is-clickable"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://github.com/momoh66"
+                  className="is-clickable"
+                >
+                  Github
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="container ">
+            <ul>
+              <li>
+                <strong>
+                  <p className="ml-6  has-text-black">Ashley Gyngell</p>
+                </strong>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.linkedin.com/in/ashley-gyngell-292457230/"
+                  className="is-clickable"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://github.com/agyngell"
+                  className="is-clickable"
+                >
+                  Github
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
     </>
   );

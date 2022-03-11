@@ -13,8 +13,8 @@ const CryptoCard = ({
   fully_diluted_market_cap,
 }) => {
   return (
-    <table class="table is-bordered is-fullwidth is-strpied">
-      <thead>
+    <table className="table is-bordered is-fullwidth ">
+      {/* <thead>
         <tr>
           <th className="crm">Position</th>
           <th className="name">Cryptocurrency Sign</th>
@@ -45,7 +45,7 @@ const CryptoCard = ({
           <th className="fully_diluted_market_cap"> Full Market Cap</th>
           <th className="7d_chart">7d chart</th>
         </tr>
-      </tfoot>
+      </tfoot> */}
       <tbody>
         <tr>
           <th>{cmc_rank}</th>
