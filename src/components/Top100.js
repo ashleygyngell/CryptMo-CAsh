@@ -18,42 +18,84 @@ const Top100 = () => {
   }, []);
 
   return (
-    <section className="section">
+    <section className="section hero is-fullheight is-primary is-large">
       <div className="container">
         <div className="columns is-multiline">
           {!cryptos ? (
-            
             <div className="pageloader ">
               <span className="title is-active ">Loading...</span>
             </div>
           ) : (
             cryptos.data.map((crypto) => (
               <div>
-                <table className="table is-bordered is-fullwidth is-strpied">
-                  <thead>
-                    <tr>
-                      <th className="crm">Position</th>
-                      <th className="name">Cryptocurrency Sign</th>
-                      <th className="name">Cryptocurrency Name</th>
-                      <th className="symbol">Symbol</th>
-                      <th className="price">Price (£)</th>
-                      <th className="volume_24h">Volume in 24 hours</th>
-                      <th className="percent_change_24h">
-                        Percentage change in 24 hours (%)
-                      </th>
-                      <th className="market_cap">Market Cap</th>
-                      <th className="fully_diluted_market_cap">
-                        Full Market Cap
-                      </th>
-                      <th className="7d_chart">7d chart</th>
-                    </tr>
-                  </thead>
-                </table>
+              
                 <CryptoCard key={crypto.id} {...crypto} />
               </div>
             ))
           )}
         </div>
+      </div>
+      <div className="hero-foot ">
+        <nav className="tabs">
+          <div className="container ">
+            <ul>
+              <li>
+                <strong>
+                  <p className="ml-6  has-text-black">Mohamed Mohamed</p>
+                </strong>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.linkedin.com/in/mohamed-mohamed-2bb355115/"
+                  className="is-clickable"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://github.com/momoh66"
+                  className="is-clickable"
+                >
+                  Github
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="container ">
+            <ul>
+              <li>
+                <strong>
+                  <p className="ml-6  has-text-black">Ashley Gyngell</p>
+                </strong>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.linkedin.com/in/ashley-gyngell-292457230/"
+                  className="is-clickable"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://github.com/agyngell"
+                  className="is-clickable"
+                >
+                  Github
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
     </section>
   );
