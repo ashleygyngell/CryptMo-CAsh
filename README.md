@@ -1,6 +1,6 @@
 # CryptMo-CAsh - Project 2 @ GA (General Assembly)
 
-This was my first paired project on the Software Engineering Immersive course, coded in collaboration with [Mohamed Mohamed](https://github.com/momoh66)
+This was my first paired project on the Software Engineering Immersive course, built in collaboration with [Mohamed Mohamed](https://github.com/momoh66)
 
 ![app-screenshot]
 
