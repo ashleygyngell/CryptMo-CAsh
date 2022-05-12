@@ -29,7 +29,7 @@ A 48 Hour Hackathon that required our app to:
 
 ## Concept 
 
-The app provides accurate information about the Top 100 cryptocurrencies and provies users with a feature to convert fiat currency into crypto. 
+A web application that provides accurate information about the top 100 cryptocurrencies and provies users with a feature to convert fiat currency into crypto. 
 
 ## Phase One (Day 0) 
 
