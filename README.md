@@ -1,6 +1,6 @@
 # CryptMo-CAsh - Project 2 @ GA (General Assembly)
 
-This was my first paired project on the Software Engineering Immersive course.
+This was my first paired project on the Software Engineering Immersive course, coded in collaboration with [Mohamed Mohamed](https://github.com/momoh66)
 
 ![app-screenshot]
 
@@ -25,7 +25,7 @@ A 48 Hour Hackathon that required our app to:
 
 ## Concept 
 
-The app provides accurate information about the Top 100 cryptocurrencies and provies users with a feature to convert fiat currency into crypto, coded in collaboration with [Mohamed Mohamed](https://github.com/momoh66)
+The app provides accurate information about the Top 100 cryptocurrencies and provies users with a feature to convert fiat currency into crypto. 
 
 ## Phase One (Day 0) 
 
