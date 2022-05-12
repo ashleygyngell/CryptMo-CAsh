@@ -23,6 +23,10 @@ A 48 Hour Hackathon that required our app to:
 - Bulma
 - HTML5
 
+## Installation 
+- Clone the repo from GitHub onto your machine.
+- Use yarn/npm to install all dependencies from the package.json file.
+
 ## Concept 
 
 The app provides accurate information about the Top 100 cryptocurrencies and provies users with a feature to convert fiat currency into crypto. 
