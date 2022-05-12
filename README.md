@@ -2,7 +2,7 @@
 
 This was my first paired project on the Software Engineering Immersive course.
 
-!SCREENSHOT OF APP
+![app-screenshot]
 
 ## Deployment
 
