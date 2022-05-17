@@ -66,7 +66,12 @@ Once we could display the returned information in the console, we set about mapp
 
 In order for us to display the logo and chart of each currency, I inspected the CoinMarketCap website and found that each logo was being displayed as a link with the id of each currency. As a result we set the state "id", using template literals to incorporate into the string (URL).
 
-![id-scraping-example]
+```<td>
+   <figure className="image is-64x64 is-clickable">
+   <img src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${id}.png`} alt={name}/>
+   </figure>
+   </td>
+```
 
 Finally we created the conversion feature, demanding a lot of state manipulation and made use of our second axios request. On this page, users scroll through the two pre-populated lists (from our async response) of fiat currencies and crypto currencies and can then type how much they would like to convert. The setState function then displays the correct converted fiat currency. 
 
