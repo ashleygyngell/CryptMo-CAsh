@@ -75,7 +75,16 @@ In order for us to display the logo and chart of each currency, I inspected the 
 
 Finally we created the conversion feature, demanding a lot of state manipulation and made use of our second axios request. On this page, users scroll through the two pre-populated lists (from our async response) of fiat currencies and crypto currencies and can then type how much they would like to convert. The setState function then displays the correct converted fiat currency. 
 
-![conversion-example]
+```
+ function handleChange({ target: { value } }) {
+    setAmount(parseInt(value));
+    const divisibleNumber =
+      cryptos[selectedCrypto].quote[selectedCurrency].price;
+
+    console.log({ amount, divisibleNumber });
+    setConversionResult(parseInt(value) / divisibleNumber);
+  }
+  ```
 
 ## Wins 
 
