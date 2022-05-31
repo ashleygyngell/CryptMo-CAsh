@@ -2,7 +2,7 @@
 
 This was my first paired project on the Software Engineering Immersive course, built in collaboration with [Mohamed Mohamed](https://github.com/momoh66)
 
-![app-screenshot]
+![app-screenshot](https://res.cloudinary.com/dj7e2jadx/image/upload/v1653936029/Screenshot_2022-05-30_at_19.38.46_dr58sm.png)
 
 ## Deployment
 
@@ -35,14 +35,14 @@ A web application that provides accurate information about the top 100 cryptocur
 
 **Concept, Whiteboarding, Pseudocoding.** 
 
-![whiteboarding-example]
+![whiteboarding-example](https://res.cloudinary.com/dj7e2jadx/image/upload/v1654003379/Screenshot_2022-05-10_at_11.40.53_zzmrgo.png)
 
 Our initial conversations centered around what sort of API we should be looking for and the type of app we were looking to create. After some rigorous research and testing via postman, the [CoinMarketCap Api](https://coinmarketcap.com/api/) both excited us and provided us with the multiple endpoints for our app to consume. 
 
 - GET the top 100 current cryptocurrencies
 - GET all the applicable fiat currencies 
 
-![api-response-example]
+![api-response-example](https://res.cloudinary.com/dj7e2jadx/image/upload/v1654003645/Screenshot_2022-05-31_at_14.26.59_y7z6jz.png)
 
 The first endpoint was most useful to us and as pictured, returned an object. This was made up of an array of 100 objects, each providing accurate information about the specific coin (including the ranking, symbol, circulating supply and price). 
 
@@ -66,12 +66,16 @@ Once we could display the returned information in the console, we set about mapp
 
 In order for us to display the logo and chart of each currency, I inspected the CoinMarketCap website and found that each logo was being displayed as a link with the id of each currency. As a result we set the state "id", using template literals to incorporate into the string (URL).
 
+
+
 ```<td>
    <figure className="image is-64x64 is-clickable">
    <img src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${id}.png`} alt={name}/>
    </figure>
    </td>
 ```
+
+![currency-screenshot](https://res.cloudinary.com/dj7e2jadx/image/upload/v1654002839/Screenshot_2022-05-31_at_14.10.27_mwbmxd.png)
 
 Finally we created the conversion feature, demanding a lot of state manipulation and made use of our second axios request. On this page, users scroll through the two pre-populated lists (from our async response) of fiat currencies and crypto currencies and can then type how much they would like to convert. The setState function then displays the correct converted fiat currency. 
 
@@ -85,7 +89,7 @@ Finally we created the conversion feature, demanding a lot of state manipulation
     setConversionResult(parseInt(value) / divisibleNumber);
   }
   ```
-
+![convert-screenshot](https://res.cloudinary.com/dj7e2jadx/image/upload/v1654002962/Screenshot_2022-05-31_at_14.15.43_ziqbwf.png)
 ## Wins 
 
 Time management - We kept our expectations low and focussed on the code. This meant we could take time ensuring each page worked effiently and correctly. 
